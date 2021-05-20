@@ -1,0 +1,10 @@
+{
+    "$schema": "http://on.cypress.io/cypress.schema.json",
+    "experimentalStudio": true,
+    "baseUrl": "https://purescript-react-realworld.netlify.app",
+    "video": false,
+    "reporter": "cypress-multi-reporters",
+    "reporterOptions": {
+        "configFile": "reporter-config.json"    
+    }
+}
