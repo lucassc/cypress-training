@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npx cypress run",
     "report:merge": "mochawesome-merge > report_index.json",
-    "report:genereate": "marge report_index.json",
+    "report:generate": "marge report_index.json",
     "report:clean": "rimraf mochawesome-report report_index.json"
   },
   "keywords": [],
