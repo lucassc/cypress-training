@@ -1,14 +1,12 @@
 /// <reference types="cypress" />
 
-describe('Login', () =>
-{
-    it('Login with valid user and password', () => 
-    {
+describe('Login', () => {
+
+    it('Login with valid user and password', () => {
         cy.visit('/');
 
         cy.get('[href*=login]')
             .click();
-
 
         const user = Cypress.env('user').email;
         const pass = Cypress.env('user').password;
@@ -26,7 +24,5 @@ describe('Login', () =>
         cy.get('.nav-pills a.nav-link')
             .first() //.eq(0)
             .should('contains.text', 'Your Feed');
-
-
     });
 });
