@@ -23,3 +23,36 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('loginConduit', () => {
+
+    
+    cy.request({
+        method: 'POST',
+        url: `${Cypress.env('apiUrl')}/users/login`,
+        body: {
+            "user": {
+                "email": Cypress.env('user').email,
+                "password": Cypress.env('user').password
+            }
+        },
+        headers: {
+            'accept':'application/json',
+            'content-type':'application/json',
+        }
+    }).then(response => {
+        //json path
+        var token = response.body.user.token;
+        localStorage.setItem('token', token);
+
+        cy.visit('/');
+
+        cy.get('.nav-pills a.nav-link')
+            .should('have.length', 2);
+
+        cy.get('.nav-pills a.nav-link')
+            .first() //.eq(0)
+            .should('contains.text', 'Your Feed');
+    });
+
+});
